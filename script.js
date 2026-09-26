@@ -58,59 +58,12 @@ height: 0px !important;
     z-index: 2147483647 !important;
     pointer-events: none;
   `;
-const s=n.attachShadow({mode:"open"}),p=document.createElement("div");
-p.id="app-inner";
-p.className="dark"; // تفعيل Dark Mode افتراضياً من البداية
-p.style.pointerEvents="auto";
-
-// --- تنسيقات الأسود والأبيض والفضي + أنيميشن الفضي المضيء ---
-const styleElem = document.createElement("style");
-styleElem.textContent = `
-  /* إجبار الخلفية السوداء المطفأة والنصوص البيضاء/الفضية */
-  #app-inner, #app-inner > div {
-    background-color: #09090b !important;
-    color: #f4f4f5 !important;
-  }
-  #app-inner .bg-white, #app-inner .bg-slate-50, #app-inner .bg-gray-50, #app-inner .bg-gray-100 {
-    background-color: #121215 !important;
-    color: #f4f4f5 !important;
-  }
-  #app-inner *, #app-inner .border {
-    border-color: #27272a !important;
-  }
-
-  /* أنيميشن التدرج الفضي والمعدني */
-  @keyframes silverShimmer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* تنسيق حقوق DEVELOPED BY JOOX.10 بالخط العريض واللون الفضي */
-  #joox-rights {
-    background: linear-gradient(90deg, #ffffff, #a1a1aa, #52525b, #e4e4e7, #ffffff);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: silverShimmer 3.5s ease infinite;
-    font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 900;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-align: center;
-    padding: 12px 0 6px 0;
-    margin-top: auto !important;
-    width: 100%;
-    pointer-events: none;
-    user-select: none;
-  }
-`;
-s.appendChild(styleElem);
+const s=n.attachShadow({mode:"open"}),p=document.createElement("div");p.id="app-inner",p.style.pointerEvents="auto",s.appendChild(p);
 
 const D=()=>{document.querySelectorAll("style").forEach(m=>{(m.textContent?.includes("--tw-")||m.textContent?.includes("tailwindcss"))&&s.appendChild(m.cloneNode(!0))})};
 document.body.appendChild(n),D(),yp.createRoot(p).render(we.jsx(Ca.StrictMode,{children:we.jsx(Kp,{})}));
 
-// --- إضافة الحقوق في الأسفل بعد التأكد من الترتيب ---
+// --- إضافة حقوق JOOX.10 ---
 const addRights = setInterval(() => {
   const panel = p.querySelector("div");
   if (panel && !p.querySelector("#joox-rights")) {
@@ -118,15 +71,18 @@ const addRights = setInterval(() => {
     rights.id = "joox-rights";
     rights.innerHTML = "DEVELOPED BY JOOX.10";
     
+    // محاذاة اللوحة لتستقر الحقوق في القاع تماماً
     panel.style.display = "flex";
     panel.style.flexDirection = "column";
-    
+
+    // تداخل الأبيض والأسود/الرمادي الداكن بخط عريض
+    rights.style.cssText = "text-align: center; font-size: 11px; font-weight: 900; letter-spacing: 0.25em; padding: 12px 0 8px 0; margin-top: auto; width: 100%; pointer-events: none; user-select: none; background: linear-gradient(180deg, #ffffff 0%, #52525b 60%, #18181b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.8));";
+
     panel.appendChild(rights);
     clearInterval(addRights);
   }
 }, 500);
+// ---------------------------
 
-console.log("🚀 joox tools injected with Default Dark Theme & Silver JOOX.10 Footer!");
-};
-
+console.log("🚀 joox tools (Shadow Isolation) injected & JOOX.10 rights added!")};
 if(document.body)To();else{const l=new MutationObserver(()=>{document.body&&(To(),l.disconnect())});l.observe(document.documentElement,{childList:!0})}})();

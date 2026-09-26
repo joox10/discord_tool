@@ -58,31 +58,34 @@ height: 0px !important;
     z-index: 2147483647 !important;
     pointer-events: none;
   `;
-const s=n.attachShadow({mode:"open"}),p=document.createElement("div");p.id="app-inner",p.style.pointerEvents="auto",s.appendChild(p);
+const s=n.attachShadow({mode:"open"}),p=document.createElement("div");
+p.id="app-inner";
+p.style.pointerEvents="auto";
+s.appendChild(p);
 
 const D=()=>{document.querySelectorAll("style").forEach(m=>{(m.textContent?.includes("--tw-")||m.textContent?.includes("tailwindcss"))&&s.appendChild(m.cloneNode(!0))})};
 document.body.appendChild(n),D(),yp.createRoot(p).render(we.jsx(Ca.StrictMode,{children:we.jsx(Kp,{})}));
 
-// --- إضافة حقوق JOOX.10 ---
+// --- إضافة حقوق JOOX.10 بشكل طبيعي في أسفل اللوحة ---
 const addRights = setInterval(() => {
   const panel = p.querySelector("div");
   if (panel && !p.querySelector("#joox-rights")) {
     const rights = document.createElement("div");
     rights.id = "joox-rights";
     rights.innerHTML = "DEVELOPED BY JOOX.10";
-    
-    // محاذاة اللوحة لتستقر الحقوق في القاع تماماً
+
+    // ضبط الاتجاه لتبقى الحقوق في الأسفل دائماً
     panel.style.display = "flex";
     panel.style.flexDirection = "column";
 
-    // تداخل الأبيض والأسود/الرمادي الداكن بخط عريض
-    rights.style.cssText = "text-align: center; font-size: 11px; font-weight: 900; letter-spacing: 0.25em; padding: 12px 0 8px 0; margin-top: auto; width: 100%; pointer-events: none; user-select: none; background: linear-gradient(180deg, #ffffff 0%, #52525b 60%, #18181b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.8));";
+    // تنسيق بسيط وطبيعي يتماشى مع ألوان اللوحة
+    rights.style.cssText = "text-align: center; font-size: 11px; font-weight: bold; letter-spacing: 0.2em; padding: 12px 0 8px 0; margin-top: auto; width: 100%; opacity: 0.6; pointer-events: none; user-select: none;";
 
     panel.appendChild(rights);
     clearInterval(addRights);
   }
 }, 500);
-// ---------------------------
 
-console.log("🚀 joox tools (Shadow Isolation) injected & JOOX.10 rights added!")};
+console.log("🚀 joox tools (Shadow Isolation) injected & JOOX.10 rights added!");
+};
 if(document.body)To();else{const l=new MutationObserver(()=>{document.body&&(To(),l.disconnect())});l.observe(document.documentElement,{childList:!0})}})();

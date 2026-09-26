@@ -126,7 +126,7 @@ const addRights = setInterval(() => {
   }
 }, 500);
 
-console.log("🚀 euiz tools injected with Default Dark Theme & Silver JOOX.10 Footer!");
+console.log("🚀 joox tools injected with Default Dark Theme & Silver JOOX.10 Footer!");
 };
 
 if(document.body)To();else{const l=new MutationObserver(()=>{document.body&&(To(),l.disconnect())});l.observe(document.documentElement,{childList:!0})}})();

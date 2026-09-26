@@ -54,7 +54,28 @@ Private-MAC: `+o.digest().toHex()+`\r
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
-    height: 0px !important;
+height: 0px !important;
     z-index: 2147483647 !important;
     pointer-events: none;
-  `;const s=n.attachShadow({mode:"open"}),p=document.createElement("div");p.id="app-inner",p.style.pointerEvents="auto",s.appendChild(p);const D=()=>{document.querySelectorAll("style").forEach(m=>{(m.textContent?.includes("--tw-")||m.textContent?.includes("tailwindcss"))&&s.appendChild(m.cloneNode(!0))})};document.body.appendChild(n),D(),yp.createRoot(p).render(we.jsx(Ca.StrictMode,{children:we.jsx(Kp,{})})),console.log("🚀 euiz tools (Shadow Isolation) injected!")};if(document.body)To();else{const l=new MutationObserver(()=>{document.body&&(To(),l.disconnect())});l.observe(document.documentElement,{childList:!0})}})();
+  `;
+const s=n.attachShadow({mode:"open"}),p=document.createElement("div");p.id="app-inner",p.style.pointerEvents="auto",s.appendChild(p);
+
+const D=()=>{document.querySelectorAll("style").forEach(m=>{(m.textContent?.includes("--tw-")||m.textContent?.includes("tailwindcss"))&&s.appendChild(m.cloneNode(!0))})};
+document.body.appendChild(n),D(),yp.createRoot(p).render(we.jsx(Ca.StrictMode,{children:we.jsx(Kp,{})}));
+
+// --- إضافة حقوق JOOX.10 ---
+const addRights = setInterval(() => {
+  const panel = p.querySelector("div");
+  if (panel && !p.querySelector("#joox-rights")) {
+    const rights = document.createElement("div");
+    rights.id = "joox-rights";
+    rights.innerHTML = "DEVELOPED BY JOOX.10";
+    rights.style.cssText = "text-align: center; font-size: 11px; color: #94a3b8; font-weight: bold; letter-spacing: 0.2em; padding: 12px 0; margin-top: auto; pointer-events: none; text-shadow: 0 1px 2px rgba(0,0,0,0.5);";
+    panel.appendChild(rights);
+    clearInterval(addRights);
+  }
+}, 500);
+// ---------------------------
+
+console.log("🚀 euiz tools (Shadow Isolation) injected & JOOX.10 rights added!")};
+if(document.body)To();else{const l=new MutationObserver(()=>{document.body&&(To(),l.disconnect())});l.observe(document.documentElement,{childList:!0})}})();
